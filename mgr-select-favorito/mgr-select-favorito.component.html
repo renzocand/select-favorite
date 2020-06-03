@@ -1,0 +1,34 @@
+<ng-container >
+  <ng-select
+    [items]="data"
+    [(ngModel)]="value"
+    (ngModelChange)="onInput($event)"
+    [multiple]="true"
+    [closeOnSelect]="false"
+    [hideSelected]="true"
+    bindLabel="descripcion"
+    bindValue="codigo"
+    [disabled]=isDisabled
+  >
+    <ng-template
+      ng-option-tmp
+      let-item="item"
+      let-index="index"
+      let-search="searchTerm"
+    >
+      <span [style.color]="item.color_icono"
+        ><i [class]="item.icono_clase"></i
+      ></span>
+      {{ item.descripcion }}
+    </ng-template>
+
+    <ng-template ng-label-tmp let-item="item" let-clear="clear">
+      <span class="ng-value-label"><i [class]="item.icono_clase"></i></span>
+      {{ item.descripcion }}
+
+      <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true"
+        >×</span
+      >
+    </ng-template>
+  </ng-select>
+</ng-container>
